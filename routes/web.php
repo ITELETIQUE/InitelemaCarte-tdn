@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ContactsController;
+use App\Mail\ContactMessageCreated;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,9 @@ use App\Http\Controllers\ContactsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/test-email', function(){
+   // return new ContactMessageCreated('Issanda ngolombe', 'ngolompava@gmail.com', 'Je suis fier de vous...');
+});
 Route::get('/', [PagesController::class, 'home'])->name('rout_path');
 
 Route::get('/about', [PagesController::class, 'about'])->name('about_path');
