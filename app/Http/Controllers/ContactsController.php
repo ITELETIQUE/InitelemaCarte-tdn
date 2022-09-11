@@ -39,15 +39,13 @@ class ContactsController extends Controller
      */
     public function store(ContactsFormRequest $request)
     {
-       /* Contacts::create([
-            'name' => request('name'),
-            'email' => request('email'),
-            'message' => request('message')
-        ]);
-        set_flash("Votre message est envoyer avec succes", 'success');
-        return redirect(route('rout_path'));*/
-        $mailable = new ContactMessageCreated($request->name, $request->email, $request->message);
-         Mail::to('admin@gmail.com')->send($mailable);
+     
+       $message = Contacts::create($request->only('name','email', 'message'));
+
+        $mailable = new ContactMessageCreated($message);
+
+        Mail::to(config('Initelema.admin_support_email'))->send($mailable);
+
         set_flash("Nous vous repondons dans les plus brefs delais", 'success');
         return redirect(route('rout_path'));
          
