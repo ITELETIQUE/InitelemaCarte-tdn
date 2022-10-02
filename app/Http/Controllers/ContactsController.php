@@ -44,7 +44,7 @@ class ContactsController extends Controller
 
         $mailable = new ContactMessageCreated($message);
 
-        Mail::to(config('Initelema.admin_support_email'))->send($mailable);
+        Mail::to(config('Initelema.admin_support_email'))->queue($mailable);
 
         set_flash("Nous vous repondons dans les plus brefs delais", 'success');
         return redirect(route('rout_path'));

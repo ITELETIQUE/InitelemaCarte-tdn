@@ -3,7 +3,7 @@
 if (! function_exists('page_title')) {
 	function page_title($title)
 	{
-		$baseTitle = config('app.name').' - List of artisan';
+		$baseTitle = config('app.name').' - List of artisans';
 
 		if ($title === '') {
 			return $baseTitle;
